@@ -4,6 +4,9 @@
 import morepath
 from webob.exc import HTTPNotFound, HTTPInternalServerError
 
+# Import requests library
+import requests
+
 app = morepath.App(name='Hello')
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
@@ -17,7 +20,8 @@ class Root(object):
 @app.view(model=Root)
 def hello_world(self, request):
     """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    requests.get("https://www.digitalocean.com")
+    return 'Hello Digital Ocean!'
 
 
 @app.view(model=HTTPNotFound)
